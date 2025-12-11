@@ -244,7 +244,7 @@ Hata yönetiminde kullanılır.
 var dosya = file.open("test.txt", file.READ);
 match (dosya) {
     Ok(h) => h.read_all(), // h: FileHandle
-    Err(e) => print("Hata: " + e)
+    Err(e) => echo("Hata: {e}")
 }
 ```
 
@@ -254,7 +254,7 @@ match (dosya) {
 Geleneksel, virgül ile ayrılmış yapı.
 ```nim
 for (i=0, i<10, i++) {
-    print(i);
+    echo(i);
 }
 ```
 
@@ -262,10 +262,9 @@ for (i=0, i<10, i++) {
 `baslangic..bitis` (bitiş dahil).
 ```nim
 // i burada otomatik "i:i32=0" olarak tanımlanır. 
-// range (A..Z), (a..z),(0..999) gibi tanımlana bilir.
-// hex lerdekullanılabilir (0x0..0xFF) gibi yada bellek taraması yapabilir.
+// range (A..Z), (a..z),(0..999) gibi tanımlanabilir.
 for (i in 0..10) {
-    print(i); // 0, 1, ..., 10
+    echo(i); // 0, 1, ..., 10
 }
 ```
 
@@ -273,7 +272,7 @@ for (i in 0..10) {
 ```nim
 var isimler = ["Ali", "Veli"];
 for (isim in isimler) {
-    print(isim);
+    echo(isim);
 }
 ```
 
@@ -300,7 +299,7 @@ Bir kod bloğunun hata vermesi durumunda, belirli bir sayıda tekrar denenmesini
 rolling:BAGLANTI => {
     // $rolling değişkeni otomatik tanımlanır ve 0'dan başlar.
     
-    print("Bağlanmaya çalışılıyor... Deneme: {$rolling}");
+    echo("Bağlanmaya çalışılıyor... Deneme: {$rolling}");
     
     var conn = network.connect("sunucu.com");
     
@@ -328,7 +327,7 @@ fn topla(a: i32, b: i32): i32 {
 Dönüş tipi belirtilmezse `void` kabul edilir.
 ```nim
 fn selamla(isim: str) {
-    print("Merhaba " + isim);
+    print("Merhaba {isim}");
 }
 ```
 
@@ -543,7 +542,7 @@ Bu modül, çekirdekler, registerlar (kaydediciler) ve düşük seviyeli işlemc
 *   `reg_get(reg_id) -> u64`: Belirtilen register'ın (örn: `cpu.RAX`) değerini okur.
 *   `reg_set(reg_id, val)`: Register'a değer yazar. **Dikkatli kullanılmalıdır.**
 *   `pause()`: İşlemciye "duraklama" (spin-loop hint) sinyali gönderir. Enerji tasarrufu ve HT performansı için döngülerde kullanılır.
-*   `clflush(ptr)`: Belirtilen adresi CPU önbelleğinden (cache) temizler.
+*   `flush(ptr)`: Belirtilen adresi CPU önbelleğinden (cache) temizler.
 *   `rdtsc() -> u64`: Time-Stamp Counter değerini okur (Çok hassas zamanlama için).
 *   `get_freq() -> i32`: Anlık CPU frekansını (MHz) döndürür.
 
@@ -699,7 +698,7 @@ Bu modül, tüm ağ operasyonlarını üç ana grup altında toplar.
 ```nim
 var cevap = net.http.get("https://api.ornek.com/veri");
 if cevap.is_ok() {
-    print(cevap.unwrap().body);
+    echo(cevap.unwrap().body);
 }
 ```
 
@@ -765,7 +764,7 @@ db.sqlite.exec(con, "INSERT INTO user VALUES (1, 'Ahmet')");
 // Sorgula
 var satirlar = db.sqlite.query(con, "SELECT * FROM user");
 for (satir in satirlar) {
-    print("Kullanıcı: {satir["name"]}");
+    echo("Kullanıcı: {satir["name"]}");
 }
 
 db.sqlite.close(con);
@@ -788,7 +787,7 @@ db.nosql.set(store, "session_123", "{user_id: 5}");
 
 var val = db.nosql.get(store, "session_123");
 if val.is_some() {
-    print("Oturum Verisi: {val.unwrap()}");
+    echo("Oturum Verisi: {val.unwrap()}");
 }
 ```
 
@@ -837,7 +836,7 @@ print("Hash: {sifre_hash}");
 var basla = time.measure_start();
 time.sleep(500); // 500ms uyu
 var sure = time.measure_end(basla);
-print("Geçen süre: {sure}");
+echo("Geçen süre: {sure}");
 ```
 
 ### 11.11 `rand` Modülü
@@ -868,7 +867,7 @@ var zar = rand.range_i32(rng, 1, 7); // 1-6
 var re = regex.compile("\\d+").unwrap(); // Sayıları bul
 var sonuc = re.find("Sipariş No: 12345");
 if sonuc.is_some() {
-    print("Numara: {sonuc.unwrap().text()}"); // 12345
+    echo("Numara: {sonuc.unwrap().text()}"); // 12345
 }
 ```
 
