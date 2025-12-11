@@ -764,7 +764,7 @@ db.sqlite.exec(con, "INSERT INTO user VALUES (1, 'Ahmet')");
 // Sorgula
 var satirlar = db.sqlite.query(con, "SELECT * FROM user");
 for (satir in satirlar) {
-    echo("Kullanıcı: {satir["name"]}");
+    echo("Kullanıcı: {satir['name']}");
 }
 
 db.sqlite.close(con);
