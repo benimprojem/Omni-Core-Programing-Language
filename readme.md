@@ -8,7 +8,7 @@
 - ✅ **Heterogeneous Arrays** - `arr` tipi ile farklı tipleri aynı dizide saklama
 - ✅ **Modern Sözdizimi** - C, Rust ve Python'dan ilham alan temiz syntax
 - ✅ **ANSI Stil Sistemi** - Renkli terminal çıktıları için yerleşik destek
-- ✅ **GCC/GAS Backend** - Doğrudan assembly üretimi, NASM bağımlılığı yok
+- ✅ **GCC/GAS Backend** - Doğrudan assembly üretimi
 - ✅ **Windows x64 ABI** - Tam uyumlu fonksiyon çağrıları
 
 ## 📦 Kurulum
@@ -124,3 +124,4 @@ NIMBLE, modern sistem programlama ihtiyaçları için geliştirilmektedir.
 ---
 
 **Not**: Bu proje aktif geliştirme aşamasındadır. Production kullanımı için henüz hazır değildir.
+
