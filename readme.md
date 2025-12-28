@@ -1,99 +1,126 @@
-# NIMBLE Derleyici Projesi (NimCompiler)
+# NIMBLE Programming Language
 
-**Proje:** NIM (NIMBLE) Derleyicisi
-**Durum:** Erken Geliştirme (Skeleton/Taslak Aşaması)
+**NIMBLE** (NIM Programlama Dili), sistem programlama için tasarlanmış, modern ve performanslı bir programlama dilidir.
 
-Bu belge, derleyicinin mevcut teknik durumunu, eksiklerini ve geliştirme yol haritasını en ince teknik detayına kadar listeler.
+## 🚀 Özellikler
+
+- ✅ **Statik Tip Sistemi** - Güçlü tip kontrolü ve tip çıkarımı
+- ✅ **Heterogeneous Arrays** - `arr` tipi ile farklı tipleri aynı dizide saklama
+- ✅ **Modern Sözdizimi** - C, Rust ve Python'dan ilham alan temiz syntax
+- ✅ **ANSI Stil Sistemi** - Renkli terminal çıktıları için yerleşik destek
+- ✅ **GCC/GAS Backend** - Doğrudan assembly üretimi, NASM bağımlılığı yok
+- ✅ **Windows x64 ABI** - Tam uyumlu fonksiyon çağrıları
+
+## 📦 Kurulum
+
+### Gereksinimler
+- Rust (1.70+)
+- GCC (MinGW-w64 Windows için)
+
+### Derleme
+```bash
+cargo build --release
+```
+
+## 🎯 Hızlı Başlangıç
+
+### Merhaba Dünya
+```nim
+fn main(): i32 {
+    echo("Merhaba, NIMBLE!\n");
+    return 0;
+}
+```
+
+### Diziler ve Döngüler
+```nim
+fn main(): i32 {
+    var sayilar: arr = [1, 2, 3, 4, 5];
+    
+    for (sayi in sayilar) {
+        echo("{sayi} ");
+    }
+    echo("\n");
+    
+    return 0;
+}
+```
+
+### Renkli Çıktı
+```nim
+style basari = "\x1b[32m";
+
+fn main(): i32 {
+    print("success", "İşlem başarılı!\n");
+    print("basari", "Özel stil\n");
+    return 0;
+}
+```
+
+## 📚 Dil Özellikleri
+
+### Tipler
+- **Tamsayılar**: `i8`, `i16`, `i32`, `i64`, `i128`, `u8`, `u16`, `u32`, `u64`, `u128`
+- **Ondalık**: `f32`, `f64`
+- **Diğer**: `bool`, `char`, `str`, `arr`, `void`
+
+### Kontrol Yapıları
+- `if-else` koşulları
+- `while` döngüsü
+- `for` döngüsü (range ve for-in)
+- `loop` sonsuz döngü
+- `break` ve `continue`
+
+### Fonksiyonlar
+- Tip güvenli parametreler
+- Dönüş tipi kontrolü
+- Recursion desteği
+
+## 🧪 Test
+
+Test dosyalarını çalıştırmak için:
+```bash
+cargo run -- test/test1.n
+```
+
+20 kapsamlı test dosyası mevcuttur (test1-test20).
+
+## 📈 Geliştirme Durumu
+
+**Mevcut Kapsam**: ~75%
+
+### ✅ Tamamlanan
+- Lexer & Parser
+- Type Checker
+- Codegen (temel)
+- Array desteği
+- String interpolation
+- ANSI stil sistemi
+
+### 🚧 Devam Eden
+- Bitwise operatörler
+- Pointer semantiği
+- Match ifadeleri
+- Enum codegen
+
+### 📅 Planlanan
+- Lambda fonksiyonlar
+- Hata yönetimi (Result/Option)
+- Inline assembly
+- Async/await
+
+## 🤝 Katkıda Bulunma
+
+Katkılarınızı bekliyoruz! Lütfen bir issue açın veya pull request gönderin.
+
+## 📄 Lisans
+
+MIT License
+
+## 👨‍💻 Geliştirici
+
+NIMBLE, modern sistem programlama ihtiyaçları için geliştirilmektedir.
 
 ---
 
-## 🛠️ 1. Kurulum ve Gereksinimler
-
-Projenin derlenebilmesi için aşağıdaki araçlar **ZORUNLUDUR**.
-
----
-
-## 📊 2. Mevcut Teknik Durum (Detaylı Analiz)
-
-### 2.1 Lexer & Parser (Ön Yüz)
-*   **Durum:** %85 Tamamlandı.
-*   **Yetenekler:** Değişkenler, fonksiyonlar, struct/enum tanımları, akış kontrolü (`if/for/while`), `rolling` bloğu, fonksiyonları ayrıştırılabiliyor.
-*   **Eksikler:** Karmaşık Generic sözdizimi ve bazı operatör öncelikleri test edilmeli.
-
-### 2.2 Type Checker (Semantik Analiz)
-*   **Durum:** %60 Tamamlandı.
-*   **Yetenekler:**
-    *   Değişken kapsamı (scope) takibi.
-    *   Fonksiyon imza kontrolü.
-    *   Basit tip uyuşmazlığı kontrolü (örn: `i32` yerine `str` atama).
-    *   `struct` ve `enum` tanımlarının tanınması.
-*   **Eksikler:**
-    *   Pointer (`ptr`) aritmetiği kontrolü.
-    *   Generic tip çıkarımı (Type Inference) çok temel seviyede.
-    *   Borrow checker benzeri sahiplik kuralları ama daha esnek.
-
-### 2.3 Codegen  🟥 KRİTİK EKSİK
-*   **Durum:** %5 (Sadece İskelet).
-*   **Mevcut Yetenekler:**
-    *   Basit fonksiyon (`main`) çatısı oluşturma.
-    *   Sadece `i64` tamsayı literalleri ve basit aritmetik (`+`, `-`, `*`, `/`) işlemleri.
-    
-*   **Eksik/Çalışmayan Parçalar:**
-    *   Wait for implement: **Değişken Tanımlama:** `alloca` ve `store` komutları yok. Değişkenler bellekte yer kaplamıyor.
-    *   Wait for implement: **Atama (`Assign`):** Değişkenlere değer atanamıyor.
-    *   Wait for implement: **Echo/Print:** `printf` veya `puts` entegrasyonu yok (Sadece yorum satırı var).
-    *   Wait for implement: **Akış Kontrolü:** `If`, `While`, `For` döngüleri için Temel Blok (Basic Block) ve Dallanma (Branch) mantığı **YOK**.
-    *   Wait for implement: **Fonksiyon Çağrıları:** Parametre iletimi yok.
-    *   Wait for implement: **String/Struct:** Karmaşık tipler tanımlı değil.
-    
-### 2.4 io.nim  🟥 KRİTİK EKSİK
-    *   _printf fonksiyonu ve yardımcı fonksiyonları yazılacak.
-    *   input   fonksiyonu yazılacak.
----
-
-## 📝 3. Teknik Yol Haritası (TODO)
-
-Sırasıyla yapılması gereken teknik görevler:
-
-### Aşama 1: "Hello World" ve Temel Değişkenler (ÖNCELİKLİ)
-Bu aşama, derleyicinin en basit programı çalıştırabilir hale gelmesi içindir.
-
-1.  **Printf Entegrasyonu (`codegen.rs`):**
-    *   Global string sabiti oluşturma mantığını ekle (format stringleri için).
-    *   `Stmt::Echo` işleyicisini `_printf` çağıracak şekilde güncelle.
-    
-2.  **Stack Bellek Yönetimi:**
-    *   `Stmt::VarDecl` için: Giriş bloğunda `build_alloca` ile yığın (stack) belleği ayır.
-    *   Sembol tablosuna (`variables` HashMap) bu adresi kaydet.
-    *   Başlangıç değeri varsa `build_store` ile değeri yaz.
-    
-3.  **Değişken Erişimi:**
-    *   `Expr::Variable` için: Sembol tablosundan adresi bul ve `build_load` ile değeri oku.
-
-### Aşama 2: Akış Kontrolü (Flow Control)
-1.  **If - Else:**
-    *   `then`, `else`, `merge` bloklarını oluştur.
-    *   `build_conditional_branch` ile koşula göre zıplama mantığını kur.
-    *   PHI node (seçim düğümü) ihtiyacını belirle.
-    
-2.  **Döngüler (While/Loop):**
-    *   `check` ve `body` blokları oluştur.
-    *   Koşul kontrolü ve döngü başı zıplamalarını ekle.
-
-### Aşama 3: Fonksiyonlar
-1.  **Fonksiyon Tanımı:**
-    *   Parametrelerin LLVM tiplerine dönüştürülmesi.
-    *   Parametrelerin fonksiyon girişinde stack'e kopyalanması (Mutable argümanlar için).
-    
-2.  **Return:**
-    *   `Stmt::Return` için `build_return` ekle.
-
-### Aşama 4: İleri Seviye Tipler
-1.  **String:** `Struct { len: i64, data: i8* }` şeklinde  tipi oluştur.
-2.  **Struct:** Kullanıcı tanımlı struct'ları struct tiplerine map et.
-
----
-
-## 4. Hata Ayıklama Notları
-*   `Decl::Function` içindeki `ret_type` alanı düzeltildi.
-*   Codegen şu an sadece `i64` üzerinden gidiyor, `i32` ve diğerleri için tip dönüşümü (cast) gerekecek.
+**Not**: Bu proje aktif geliştirme aşamasındadır. Production kullanımı için henüz hazır değildir.

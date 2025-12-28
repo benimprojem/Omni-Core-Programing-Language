@@ -124,13 +124,16 @@ Para birimi hesaplamalarında yuvarlama hatası olmaması için kullanılır.
 
 ### 4.1 Diziler (Arrays)
 
-NIMBLE'da diziler köşeli parantez `[]` ile tanımlanır ve başlatılır.
+NIMBLE'da diziler değişken:arr = [1,2,3] yada köşeli parantez `[]` ile tanımlanır ve başlatılır.
 
 **Statik (Sabit Boyutlu) Diziler:**
 Stack belleğinde tutulur. Boyut derleme zamanında bilinmelidir.
 
 ```nim
+var sayilarim:arr = [1, 2, üç, 4.4, 0XEFF2];
+
 var sayilar[5]: i32 = [1, 2, 3, 4, 5];
+
 var matris[3][3]: i32 = [
     [1, 0, 0],
     [0, 1, 0],
@@ -207,6 +210,18 @@ var sonuc = v1 + v2; // [5.0, 7.0, 9.0] otomatik toplanır.
 ## 6. Kontrol Akışı
 
 ### 6.1 `if - elseif - else`
+
+tek satır kod if
+```nim
+var x = 10;
+if (x > 100) print("Büyük");
+```
+tek satır kod if else
+```nim
+var x = 10;
+if (x > 100) println("Büyük");
+else println("Küçük");
+```
 
 ```nim
 var x = 10;
@@ -311,8 +326,8 @@ Bir kod bloğunun hata vermesi durumunda, belirli bir sayıda tekrar denenmesini
  `$rolling` özel değişkeni mevcut deneme sayısını tutar.
 
 ```nim
-// Blok adı: BAGLANTI
-rolling:BAGLANTI => {
+// Blok adı BAGLANTI:
+BAGLANTI:{
     // $rolling değişkeni otomatik tanımlanır ve 0'dan başlar.
     
     echo("Bağlanmaya çalışılıyor... Deneme: {$rolling}");
@@ -325,7 +340,7 @@ rolling:BAGLANTI => {
     }
     if($rolling == 5){
         echo("Bağlantı başarısız.");
-        exit(0);
+        exit(1);
     }
 }
 ```
@@ -614,6 +629,20 @@ Bu bölüm, NIMBLE standart kütüphanesindeki modüllerin tam listesidir.
 ```nim
 var ad = io.prompt("Adınız: ");
 io.println("Merhaba {ad}");
+
+// ULTRA Styling System (Renkli Çıktı)
+// 1. Stil Tanımlama (Global Kapsamda yapılmalıdır)
+style Dikkat = "\033[31;1m"; // Kırmızı ve Kalın
+style Bilgi  = "\033[36m";    // Cyan
+
+// 2. Kullanım (İkinci parametre olarak stil adı veya ANSI kodu verilir)
+io.println("Bu kritik bir hatadır!", "Dikkat");
+io.println("İşlem tamamlandı.", "Bilgi");
+io.println("Doğrudan ANSI kodu.", "\033[32m"); // Yeşil
+io.println("Normal yazı.");
+
+// Yerleşik Stiller: "error", "warn", "info", "success"
+io.println("Başarılı!", "success");
 ```
 
 ### 11.2 `string` Modülü
