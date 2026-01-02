@@ -244,12 +244,12 @@
 1. **`Never` Tipi** - `panic`, [exit] için kritik
 2. **`Result<T, E>` Tipi** - Hata yönetimi için zorunlu
 3. **`Try (expr?)` İfadesi** - Hata yönetimi için
-3.1**`(true fn)<- <ret fn> ?-> fn (err)` - Ternary kontrole benzer başarılı ise sola, başarısız ise sağa kayar kontrol
-4. **`Fn(Vec<Type>, Box<Type>)` Tipi** - Lambda/First-class fonksiyonlar
-5. **`StructLiteral` İfadesi** - Struct oluşturma eksik
-6. **`AddressOf (&)` ve `Deref (*)` Operatörleri** - İşaretçi semantiği
-7. **`Asm { tag, body }`** - Inline assembly desteği
-8. **Bitwise Operatörler Codegen** - `&`, `|`, `^`, `<<`, `>>`
+4. **`(true fn)<- <ret fn> ?-> fn (err)` - Ternary kontrole benzer başarılı ise sola, başarısız ise sağa kayar kontrol
+5. **`Fn(Vec<Type>, Box<Type>)` Tipi** - Lambda/First-class fonksiyonlar
+6. **`StructLiteral` İfadesi** - Struct oluşturma eksik
+7. **`AddressOf (&)` ve `Deref (*)` Operatörleri** - İşaretçi semantiği
+8. **`Asm { tag, body }`** - Inline assembly desteği
+9. **Bitwise Operatörler Codegen** - `&`, `|`, `^`, `<<`, `>>`
 
 ### 🟡 ORTA ÖNCELİK (Gelişmiş Özellikler)
 
