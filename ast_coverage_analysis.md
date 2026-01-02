@@ -1,4 +1,4 @@
-# NIMBLE Derleyici - AST Kapsam Analizi <(Claude Sonnet 4.5)
+# NIMBLE Derleyici - AST Kapsam Analizi (ULTRA Mod)
 
 > **Oluşturulma Tarihi**: 2025-12-28  
 > **Analiz Modu**: ULTRA (Maksimum Derinlik)  
@@ -75,7 +75,7 @@
 | `Sub (-)` | ✅ | ✅ | ✅ | ✅ | `sub rax, rbx` / `subsd xmm0, xmm1` |
 | `Mul (*)` | ✅ | ✅ | ✅ | ✅ | `imul rbx` / `mulsd xmm0, xmm1` |
 | `Div (/)` | ✅ | ✅ | ✅ | ✅ | `idiv rbx` / `divsd xmm0, xmm1` |
-| `Mod (%)` | ✅ | ✅ | ✅ | ⚠️ | Int için var, float için yok |
+| `Mod (%)` | ✅ | ✅ | ✅ | ✅ | Int, float :Fix |
 | `Equal (==)` | ✅ | ✅ | ✅ | ✅ | `cmp` + `sete` |
 | `NotEqual (!=)` | ✅ | ✅ | ✅ | ✅ | `cmp` + `setne` |
 | `Greater (>)` | ✅ | ✅ | ✅ | ✅ | `cmp` + `setg` |
