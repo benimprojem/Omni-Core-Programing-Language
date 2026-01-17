@@ -1,0 +1,11 @@
+fn main() {
+    var score:i32 = 75;
+    
+    if (score > 90) {
+        println("Grade: A");
+    } elseif (score > 70) {
+        println("Grade: B");
+    } else {
+        println("Grade: F");
+    }
+}

@@ -1,0 +1,12 @@
+fn main() {
+    var val: i32 = 2;
+    
+    var res: str = match val {
+        1 => "One",
+        2 => "Two",
+        3 => "Three",
+        def => "Other"
+    };
+    
+    println("Match result: {res}");
+}

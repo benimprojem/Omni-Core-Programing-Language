@@ -1,0 +1,4 @@
+fn main() {
+    var t: (i32, f64) = (10, 3.14);
+    println("Tuple: {t.0}, {t.1}");
+}

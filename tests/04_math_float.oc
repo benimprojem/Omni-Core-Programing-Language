@@ -1,0 +1,7 @@
+fn main() {
+    var a: f64 = 10.5;
+    var b: f64 = 2.5;
+    
+    println("Float Add: {a + b}");
+    println("Float Div: {a / b}");
+}

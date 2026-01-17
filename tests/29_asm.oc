@@ -1,0 +1,19 @@
+fn main() {
+    
+    fastexec {
+        // Standart değişken tanımlama
+        var a: i32 = 10;
+        var b: i32 = 20;
+        var total: i32 = 0;
+
+        asm: CRITICAL_ADD { 
+            mov rax, %a      // %a -> [rbp - 8] gibi bir adrese dönüşür
+            add rax, %b      // %b -> [rbp - 16]
+            mov %total, rax  // %total -> [rbp - 24]
+        }
+        asmcall(CRITICAL_ADD);
+        echo(total); // Çıktı: 30
+        #return total; // Bir fonksiyon içerisinde tanımlıysa...
+    }
+    // Şuan için çalışmıyor..
+}

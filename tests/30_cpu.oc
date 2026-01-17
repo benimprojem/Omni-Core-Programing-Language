@@ -1,0 +1,6 @@
+fn main() {
+    var cores: i32 = cpu.core_count();
+    println("CPU Cores: {cores}");
+    
+    cpu.pause(); // Relax instruction
+}

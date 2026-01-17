@@ -1,0 +1,10 @@
+fn main() {
+    var a: i32 = 100;
+    var b: i32 = 3;
+    
+    println("Add: {a + b}");
+    println("Sub: {a - b}");
+    println("Mul: {a * b}");
+    println("Div: {a / b}");
+    println("Mod: {a % b}");
+}

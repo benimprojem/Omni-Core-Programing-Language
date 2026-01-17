@@ -1,0 +1,7 @@
+fn main() {
+    var ary[3]: i32 = [10, 20, 30];
+    for (x in ary) {
+        println("Array loop: {x}");
+    }
+}
+

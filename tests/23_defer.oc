@@ -1,0 +1,7 @@
+fn main() {
+    println("Start");
+    defer {
+        println("Deferred: End");
+    }
+    println("Middle");
+}

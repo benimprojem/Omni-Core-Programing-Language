@@ -1,0 +1,12 @@
+struct Point {
+    x: i32;
+    y: i32;
+}
+
+fn main() {
+    var p: Point = Point { x: 10, y: 20 };
+    println("Point: ({p.x}, {p.y})");
+    
+    p.x = 50;
+    println("Modified Point: ({p.x}, {p.y})");
+}

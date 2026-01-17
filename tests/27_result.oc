@@ -1,0 +1,25 @@
+fn check(x: i32): Result<i32, str> {
+    if (x > 0) {
+        return Ok(x);
+    } else {
+        return Err("Negative");
+    }
+}
+
+fn main() {
+    var res = check(10);
+    if (res.is_ok()) {
+        println("Result is Ok: {res.unwrap()}");
+    }
+    
+    // expect testi
+    // check(-1).expect("Should fail"); 
+}
+
+/*
+Tip Kontrolü: Hata:
+Fonksiyondan dönülen tip (Result(Any, Any)), 
+beklenen tip (Result(I32, Str(None))) ile uyuşmuyor.
+Fonksiyon imzası dönüş tipi: Result(I32, Str(None)).
+
+*/

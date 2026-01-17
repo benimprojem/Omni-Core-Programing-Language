@@ -1,0 +1,7 @@
+fn main() {
+    console.print("This is ", "info");
+    console.println("colored text!", "success");
+    
+    // console.clear(); // Ekranı temizler (test çıktısını bozmamak için kapalı)
+}
+

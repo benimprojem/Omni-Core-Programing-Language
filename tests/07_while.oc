@@ -1,0 +1,7 @@
+fn main() {
+    var i: i32 = 0;
+    while (i < 5) {
+        println("While loop: {i}");
+        i = i + 1;
+    }
+}

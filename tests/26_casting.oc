@@ -1,0 +1,7 @@
+fn main() {
+    var f: f64 = 12.34;
+    var i: i32 = _i32(f); // _int 64bite çevirir.
+    var s: str = _str(i);
+    
+    println("Float: {f}, Int: {i}, Str: {s}");
+}

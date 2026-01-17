@@ -1,0 +1,18 @@
+fn main() {
+    var path: str = "test_file.txt";
+    
+    if (file.exists(path)) {
+        match file.open(path, r) { 
+            Ok(h) => {
+                match file.read_all(h) {
+                    Ok(content) => println("File content: {content}"),
+                    Err(e) => println("Read error: {e}")
+                }
+                file.close(h);
+            },
+            Err(e) => println("Open error")
+        }
+    } else {
+        println("File does not exist (Run test 20 first).");
+    }
+}

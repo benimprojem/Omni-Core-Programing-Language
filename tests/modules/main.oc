@@ -1,0 +1,13 @@
+use math_utils;
+
+fn main() {
+    print("Testing Modules...\n");
+    // Current TypeChecker imports exported functions into the global scope.
+    let result = add(10, 20); 
+    print("10 + 20 = ");
+    println(result);
+    
+    let sub_res = sub(30, 5);
+    print("30 - 5 = ");
+    println(sub_res);
+}

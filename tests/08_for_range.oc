@@ -1,0 +1,6 @@
+fn main() {
+    // 0'dan 5'e kadar
+    for (i in 0..5) {
+        println("Range loop: {i}");
+    }
+}

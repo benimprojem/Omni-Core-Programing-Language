@@ -1,0 +1,10 @@
+fn main() {
+    var t: bool = true;
+    var f: bool = false;
+    
+    if (t && !f) {
+        println("Test 05: Logic OK");
+    } else {
+        println("Test 05: Logic FAIL");
+    }
+}

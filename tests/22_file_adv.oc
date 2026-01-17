@@ -1,0 +1,44 @@
+fn main() {
+    var path: str = "test_adv.txt";
+    
+    // 1. Yazma (Write)
+    match file.open(path, w) {
+        Ok(h) => {
+            file.write(h, "Line 1\nLine 2\nLine 3\n");
+            file.close(h);
+            println("Test file created.");
+        },
+        Err(e) => {
+            println("Error creating file: {e}");
+            return;
+        }
+    }
+
+    // 2. Okuma ve Boyut (Read, Size)
+    match file.open(path, r) {
+        Ok(h) => {
+            var s: i64 = file.size(h);
+            println("File size: {s}");
+
+            // 3. Satır satır okuma (Read Line)
+            var l1: str = file.read_line(h);
+            println("Line 1: {l1}");
+
+            // 4. Seek ve Chunked Read
+            file.seek(h, _i64(0), 0); // Başa dön
+            match file.read(h, 4) {
+                Ok(chunk) => {
+                    println("First 4 bytes: {chunk}");
+                },
+                Err(e) => {
+                    println("Error reading chunk: {e}");
+                }
+            }
+
+            file.close(h);
+        },
+        Err(e) => {
+            println("Error opening file for reading: {e}");
+        }
+    }
+}

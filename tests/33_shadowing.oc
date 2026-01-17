@@ -1,0 +1,17 @@
+fn main() {
+    var x: i32 = 10;
+    println("Outer x: {x}");
+    
+    {
+        var x: i32 = 20;
+        println("Inner x: {x}");
+    }
+    
+    println("Outer x again: {x}");
+}
+
+/*  kapsamdan kaçıyor gibi..
+Outer x: 10
+Inner x: 20
+Outer x again: 20
+*/

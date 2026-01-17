@@ -1,0 +1,11 @@
+fn main() {
+    // 1024 byte ayır
+    var ptrr: *any = memory.alloc(1024);
+    
+    // İlk 4 byte'a yaz
+    *ptrr = 12345;
+    println("Memory value: {*ptrr}");
+    
+    memory.free(ptrr);
+    println("Memory freed.");
+}

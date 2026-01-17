@@ -1,0 +1,18 @@
+//use file;
+
+fn main() {
+    var path: str = "test_file.txt";
+    
+    // Dosya oluştur ve yaz
+    match file.open(path, w) { 
+        Ok(h) => {
+            file.write(h, "Hello File IO!");
+            file.flush(h);
+            file.close(h);
+            println("File written successfully.");
+        },
+        Err(code) => {
+            println("Error opening file: {code}");
+        }
+    }
+}

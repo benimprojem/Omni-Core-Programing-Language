@@ -1,0 +1,6 @@
+fn main() {
+    var name: str = "OmniCore";
+    var ver: f64 = 0.1;
+    
+    println("Welcome to {name} v{ver.1}");
+}

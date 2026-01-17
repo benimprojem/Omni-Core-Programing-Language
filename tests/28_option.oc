@@ -1,0 +1,25 @@
+fn find(id: i32): Option<str> {
+    if (id == 1) {
+        return Some("Found");
+    }
+    return None;
+}
+
+fn main() {
+    var res = find(1);
+    if (res.is_some()) {
+        println("Option: {res.unwrap()}");
+    }
+    
+    var none_val = find(99);
+    println("Unwrap Or: {none_val.unwrap_or("Default")}");
+}
+/*  Option<str>  tanımıyor büyük bir ihtimal..
+--- Parser Hataları ---
+[Eror:1002]Sözdizimi Hatası (Satır 1): '{' bekleniyor, Beklenen: LBrace, Bulunan: Lt
+[Eror:1002]Sözdizimi Hatası (Satır 1): Birincil ifade bekleniyor. Bulunan token: Lt
+[Eror:1002]Sözdizimi Hatası (Satır 1): İfade deyiminden sonra ';' bekleniyor. Bulunan: TypeStr
+[Eror:1002]Sözdizimi Hatası (Satır 15): Fonksiyon çağrısı için ')' bekleniyor., Beklenen: RParen, Bulunan: Ident("Default")
+[Eror:1002]Sözdizimi Hatası (Satır 15): İfade deyiminden sonra ';' bekleniyor. Bulunan: Ident("Default")
+-----------------------
+*/

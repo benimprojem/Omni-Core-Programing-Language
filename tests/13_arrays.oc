@@ -1,0 +1,6 @@
+fn main() {
+    var nums[5]: i32 = [1, 2, 3, 4, 5];
+    nums[0] = 100;
+    println("First element: {nums[0]}");
+    println("Length: {arrlen(nums)}");
+}

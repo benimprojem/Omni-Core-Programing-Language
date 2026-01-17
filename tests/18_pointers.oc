@@ -1,0 +1,10 @@
+fn main() {
+    var a: i32 = 42;
+    var ptrr: *i32 = &a;
+    
+    println("Value via pointer: {*ptrr}");
+    
+    *ptrr = 100;
+    println("New value of a: {a}");
+}
+// değişken adı olarak ptr kullanılamaz.
