@@ -1,0 +1,13 @@
+[package]
+name 	= "occ"
+version = "0.1.0"
+edition = "2026"
+author 	= "DissConnecTed"
+
+[package.metadata]
+date 	= "12-01-2026"
+info 	= "Test Derlemeleri."
+
+[dependencies]
+# Derleyicinin modülleri arayacağı ek dizinler.
+include = ./libs
